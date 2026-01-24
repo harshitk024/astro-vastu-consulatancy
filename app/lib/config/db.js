@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 
+
+const url = process.env.MONGODB_URI
+
 export const ConnectDB = async () => {
   await mongoose.connect(
-    "mongodb+srv://neetuastroguide79_db_user:ddko7RHgPZEwlL2j@neetu-mohan.5yljboq.mongodb.net/?appName=neetu-mohan",
+    url,
     {
       serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
