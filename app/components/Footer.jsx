@@ -1,20 +1,52 @@
-import { assets } from '@/Assets/assets'
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import { assets } from "@/Assets/assets";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <div className='flex justify-around flex-col gap-2 sm:gap-0 sm:flex-row bg-primary-light py-5 items-center'>
-      {/* <Image src={assets.logo_light} alt='' width={120} /> */}
-      <p className='text-white'>Dr. Neetu Mohan</p>
-      <p className='text-sm text-white'>All right reserved. Copyright @Dr. Neetu Mohan</p>
-        <div className='flex'>
-            <Image src={assets.facebook_icon} alt='' width={40} />
-            <Image src={assets.twitter_icon} alt='' width={40} />
-            <Image src={assets.googleplus_icon} alt='' width={40} />
-        </div>
-    </div>
-  )
-}
+    <footer className="bg-[#0f1217] border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 py-5
+                      flex flex-col sm:flex-row items-center justify-between gap-6">
 
-export default Footer
+        {/* Brand */}
+        <div className="text-center sm:text-left">
+          <h2 className="text-2xl font-semibold tracking-[0.25em] text-white">
+            ASTRO VASTU
+          </h2>
+          <p className="text-[12px] tracking-[0.35em] text-white/50 uppercase mt-1">
+            Consultancy
+          </p>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex items-center gap-6">
+          <Image
+            src={assets.facebook_icon}
+            alt="Facebook"
+            width={34}
+            height={34}
+            className="opacity-70 hover:opacity-100 transition"
+          />
+          <Image
+            src={assets.instagram_icon}
+            alt="Instagram"
+            width={34}
+            height={34}
+            className="opacity-70 hover:opacity-100 transition"
+          />
+          <Image
+            src={assets.twitter_icon}
+            alt="X"
+            width={34}
+            height={34}
+            className="opacity-70 hover:opacity-100 transition"
+          />
+        </div>
+      </div>
+
+      {/* Bottom */}
+      <div className="text-center text-[11px] text-white/40 pb-3">
+        © {new Date().getFullYear()} Astro Vastu Consultancy
+      </div>
+    </footer>
+  );
+}

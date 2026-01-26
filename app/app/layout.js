@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Playfair_Display, Inter } from "next/font/google";
 import Providers from "./providers";
+import Header from "@/components/HeaderMain";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -19,8 +20,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-inter text-[#333] leading-relaxed">
         <Providers>
-          {children}
-        </Providers>
+           <Header />
+
+          {/* Content starts after fixed header */}
+          <main className="pt-[120px]">
+            {children}
+          </main>
+             </Providers>
       </body>
     </html>
   );
