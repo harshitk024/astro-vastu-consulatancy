@@ -20,13 +20,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-inter text-[#333] leading-relaxed">
         <Providers>
-           <Header />
-
           {/* Content starts after fixed header */}
-          <main className="pt-[120px]">
+          <main>
             {children}
           </main>
-             </Providers>
+         </Providers>
       </body>
     </html>
   );

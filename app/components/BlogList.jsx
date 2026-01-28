@@ -1,39 +1,49 @@
 'use client'
 
-
-import { blog_data } from '@/Assets/assets'
 import React, { useEffect, useState } from 'react'
 import BlogItem from './BlogItem'
-import axios from 'axios';
+import axios from 'axios'
+import Link from 'next/link'
 
-const BlogList = () => {
+const BlogList = ({ limit, showViewMore = false }) => {
+  const [blogs, setBlogs] = useState([])
 
-    const [menu,setMenu] = useState("All");
-    const [blogs,setBlogs] = useState([]);
+  const fetchBlogs = async () => {
+    const response = await axios.get('/api/blog')
+    setBlogs(response.data.blogs)
+  }
 
-    const fetchBlogs = async () =>{
-      const response = await axios.get('/api/blog');
-      setBlogs(response.data.blogs);
-      console.log(response.data.blogs);
-    }
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
 
-    useEffect(()=>{
-      fetchBlogs();
-    },[])
+  const displayedBlogs = limit ? blogs.slice(0, limit) : blogs
 
   return (
     <div>
-      {/* <div className='flex justify-center gap-6 my-10 pt-24'>
-        <button onClick={()=>setMenu('All')} className={menu==="All"?'bg-primary text-white py-1 px-4 rounded-sm':""}>All</button>
-        <button onClick={()=>setMenu('Technology')} className={menu==="Technology"?'bg-primary text-white py-1 px-4 rounded-sm':""}>Technology</button>
-        <button onClick={()=>setMenu('Startup')} className={menu==="Startup"?'bg-primary text-white py-1 px-4 rounded-sm':""}>Startup</button>
-        <button onClick={()=>setMenu('Lifestyle')} className={menu==="Lifestyle"?'bg-primary text-white py-1 px-4 rounded-sm':""}>Lifestyle</button>
-      </div> */}
-      <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 my-30 xl:mx-24'>
-        {blogs.filter((item)=> menu==="All"?true:item.category===menu).map((item,index)=>{
-            return <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category} />
-        })}
+      <div className='flex flex-wrap justify-around gap-y-10 mb-16 xl:mx-24'>
+        {displayedBlogs.map((item) => (
+          <BlogItem
+            key={item._id}
+            id={item._id}
+            image={item.image}
+            title={item.title}
+            description={item.description}
+            category={item.category}
+          />
+        ))}
       </div>
+
+      {showViewMore && (
+        <div className="text-center">
+          <Link
+            href="/blogsPage"
+            className="text-primary font-semibold hover:underline"
+          >
+            View more blogs →
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

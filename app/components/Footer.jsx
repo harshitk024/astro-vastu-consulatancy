@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { assets } from "@/Assets/assets";
 
 export default function Footer() {
@@ -19,27 +20,49 @@ export default function Footer() {
 
         {/* Social Icons */}
         <div className="flex items-center gap-6">
-          <Image
-            src={assets.facebook_icon}
-            alt="Facebook"
-            width={34}
-            height={34}
-            className="opacity-70 hover:opacity-100 transition"
-          />
-          <Image
-            src={assets.instagram_icon}
-            alt="Instagram"
-            width={34}
-            height={34}
-            className="opacity-70 hover:opacity-100 transition"
-          />
-          <Image
-            src={assets.twitter_icon}
-            alt="X"
-            width={34}
-            height={34}
-            className="opacity-70 hover:opacity-100 transition"
-          />
+          
+          <Link
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/facebook.svg"
+              alt="Facebook"
+              width={34}
+              height={34}
+              className="opacity-70 hover:opacity-100 transition cursor-pointer"
+            />
+          </Link>
+
+          <Link
+            href="https://www.instagram.com/yourpage"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/instagram.svg"
+              alt="Instagram"
+              width={34}
+              height={34}
+              className="opacity-70 hover:opacity-100 transition cursor-pointer"
+            />
+          </Link>
+
+          <Link
+            href="https://www.youtube.com/@dr.neetu.mohan."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/youtube.svg"
+              alt="YouTube"
+              width={34}
+              height={34}
+              className="opacity-70 hover:opacity-100 transition cursor-pointer"
+            />
+          </Link>
+
         </div>
       </div>
 

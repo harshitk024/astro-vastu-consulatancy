@@ -8,12 +8,12 @@ import Footer from "@/components/Footer"
 const Page = () => {
 
     return (
-        <>
+        <div  className="pt-[240px]">
         <ToastContainer />
         <Header />
         <BlogList />
         <Footer />
-        </>
+        </div>
     )
 }
 
