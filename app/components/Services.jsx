@@ -28,58 +28,84 @@ export default function Services() {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    let scrollAmount = 0;
+    if (window.innerWidth < 640) return; // mobile = manual swipe only
 
     const interval = setInterval(() => {
-      scrollAmount += 300;
+      const scrollBy = 360 + 24;
 
-      if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-        scrollAmount = 0;
+      if (
+        slider.scrollLeft + scrollBy >=
+        slider.scrollWidth - slider.clientWidth
+      ) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        slider.scrollBy({ left: scrollBy, behavior: "smooth" });
       }
-
-      slider.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }, 1800);
+    }, 2600);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="py-20 bg-[#fffaf0] px-5">
-      <h2 className="text-center font-playfair text-3xl md:text-4xl mb-12 text-[#78350f]">
+    <section className="py-24 bg-[#fffaf2] px-4">
+      <h2 className="text-center font-playfair text-3xl md:text-4xl mb-14 text-[#78350f] tracking-wide">
         Services Offered
       </h2>
 
       <div
         ref={sliderRef}
-        className="max-w-[1200px] mx-auto flex gap-6 overflow-x-auto minimal-scroll px-1 py-2"
+        className="
+          max-w-[1200px] mx-auto
+          flex gap-6
+          overflow-x-auto
+          snap-x snap-mandatory
+          scroll-smooth
+          overscroll-x-contain
+          minimal-scroll
+          pb-6
+        "
       >
         {services.map((service, index) => (
           <div
             key={index}
-            className="min-w-[260px] bg-white rounded-3xl overflow-hidden
-                       border border-[#f1e7d8]
-                       transition-all duration-300
-                       hover:-translate-y-1 hover:shadow-xl"
+            className="
+              snap-center
+              min-w-[90%] sm:min-w-[320px] md:min-w-[360px]
+              mx-auto
+              bg-white
+              rounded-[28px]
+              overflow-hidden
+              border border-[#f3e8d8]
+              shadow-sm
+              transition-all duration-500
+              hover:-translate-y-2 hover:shadow-2xl
+              group
+            "
           >
             {/* Image */}
-            <div className="relative h-[180px] w-full">
+            <div className="relative h-[220px] overflow-hidden">
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
-                className="object-cover
+                className="
+                  object-cover
+                  transition-transform duration-700
+                  group-hover:scale-110
                 "
               />
+
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
             </div>
 
-            {/* Title */}
-            <div className="p-5 text-center">
-              <h3 className="text-sm font-semibold text-[#3f2f23] leading-snug">
+            {/* Content */}
+            <div className="p-6 text-center">
+              <h3 className="font-playfair text-base text-[#7c2d12] tracking-wide">
                 {service.title}
               </h3>
+
+              <div className="mt-3 mx-auto h-[2px] w-10 bg-[#d97706] rounded-full" />
             </div>
           </div>
         ))}

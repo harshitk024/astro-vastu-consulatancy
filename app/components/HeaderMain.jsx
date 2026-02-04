@@ -62,15 +62,15 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex justify-center gap-8 text-sm tracking-wide">
-              <Link href="/" className="hover:text-[#fde68a] transition">
-                Home
+              {["Home", "About", "Blogs"].map((item) => (
+              <Link
+                key={item}
+                href={item === "Home" ? "/" : item === "About" ? "#about" : "/blogsPage"}
+                className="relative hover:text-[#fde68a] transition after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#fde68a] after:transition-all hover:after:w-full"
+              >
+                {item}
               </Link>
-              <Link href="#about" className="hover:text-[#fde68a] transition">
-                About
-              </Link>
-              <Link href="/blogsPage" className="hover:text-[#fde68a] transition">
-                Blogs
-              </Link>
+            ))}
             </nav>
 
             {/* Right Side */}
