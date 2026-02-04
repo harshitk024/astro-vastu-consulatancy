@@ -21,16 +21,15 @@ export default function Hero() {
         <div className="text-left max-w-[560px]">
 
           <h1 className="font-playfair text-white text-[2.6rem] md:text-[3.4rem] font-bold leading-tight mb-6 drop-shadow-lg">
-            Astrology, Vastu & Healing
+            Ancient Wisdom & Insights 
             <br />
             <span className="text-[#fde68a]">
-              for Clarity and Balance
+              for a Peaceful, Prosperous Life
             </span>
           </h1>
 
           <p className="text-white/85 text-[1.05rem] md:text-[1.15rem] font-medium mb-10 leading-relaxed">
-            Personalized AstroVastu guidance rooted in ancient wisdom,
-            harmonizing energies for peace, prosperity, and purpose.
+            Welcome to AstroVastu—where Astrology and Vastu Shastra guide you to balance, success, and inner peace through accurate insights and practical remedies.
           </p>
 
           {/* Modern CTA */}
