@@ -54,7 +54,7 @@ export default function Services() {
 
       <div
         ref={sliderRef}
-        className="max-w-[1200px] mx-auto flex gap-6 overflow-x-auto scrollbar-hide px-1"
+        className="max-w-[1200px] mx-auto flex gap-6 overflow-x-auto minimal-scroll px-1 py-2"
       >
         {services.map((service, index) => (
           <div
