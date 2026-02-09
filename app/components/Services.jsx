@@ -8,7 +8,10 @@ export default function Services() {
     { title: "Life Prediction", image: "/assets/life.jpeg" },
     { title: "Money Matters & Finance Problems", image: "/assets/money.jpeg" },
     { title: "Career & Business Guidance", image: "/assets/career.jpeg" },
-    { title: "Marriage & Relationship Guidance", image: "/assets/relationship.jpeg" },
+    {
+      title: "Marriage & Relationship Guidance",
+      image: "/assets/relationship.jpeg",
+    },
     { title: "Home Vastu (AstroVastu)", image: "/assets/home.jpeg" },
     { title: "Industry Vastu (AstroVastu)", image: "/assets/industry.jpeg" },
     { title: "Child Birth Guidance", image: "/assets/child.jpg" },
@@ -17,7 +20,10 @@ export default function Services() {
     { title: "Match Making", image: "/assets/match-making.jpeg" },
     { title: "Kundli Making", image: "/assets/kundali.jpeg" },
     { title: "Spiritual Coaching", image: "/assets/spiritual_coach.jpeg" },
-    { title: "Vedic & Advanced Astrology Coaching", image: "/assets/vedic.jpeg" },
+    {
+      title: "Vedic & Advanced Astrology Coaching",
+      image: "/assets/vedic.jpeg",
+    },
     { title: "Vastu Shastra Coaching", image: "/assets/vastu-shastra.jpeg" },
     { title: "AstroVastu Coaching", image: "/assets/astrovastu.jpeg" },
   ];
@@ -28,8 +34,10 @@ export default function Services() {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    if (window.innerWidth < 640) return; // mobile = manual swipe only
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
+    if (isTouchDevice) return;
     const interval = setInterval(() => {
       const scrollBy = 360 + 24;
 
@@ -55,22 +63,28 @@ export default function Services() {
       <div
         ref={sliderRef}
         className="
-          max-w-[1200px] mx-auto
-          flex gap-6
-          overflow-x-auto
-          snap-x snap-mandatory
-          scroll-smooth
-          overscroll-x-contain
-          minimal-scroll
-          pb-6
-        "
+    max-w-[1200px] mx-auto
+    flex gap-6
+    overflow-x-auto
+    scroll-smooth
+    overscroll-x-contain
+    pb-6
+
+    snap-x sm:snap-mandatory
+    touch-pan-x
+
+    [scrollbar-width:none]
+    [-ms-overflow-style:none]
+    [&::-webkit-scrollbar]:hidden
+  "
+        style={{ WebkitOverflowScrolling: "touch" }}
       >
         {services.map((service, index) => (
           <div
             key={index}
             className="
               snap-center
-              min-w-[90%] sm:min-w-[320px] md:min-w-[360px]
+              min-w-[85%] sm:min-w-[320px] md:min-w-[360px]
               mx-auto
               bg-white
               rounded-[28px]

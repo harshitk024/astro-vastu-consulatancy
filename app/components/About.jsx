@@ -94,7 +94,7 @@ export default function About() {
 
             <div className="relative w-full h-full rounded-[32px] overflow-hidden shadow-2xl bg-white">
               <Image
-                src="/assets/person.jpeg"
+                src="/assets/about.jpeg"
                 alt="Dr. Neetu Mohan"
                 fill
                 className="object-cover object-center"
