@@ -22,7 +22,7 @@ export default function About() {
         <div className="flex-1 text-center md:text-left space-y-8">
           {/* Heading */}
           <div className="space-y-5">
-            <h2 className="font-playfair font-extrabold text-3xl md:text-5xl text-[#78350f]">
+            <h2 className="font-playfair font-extrabold text-2xl sm:text-3xl md:text-5xl text-[#78350f] whitespace-nowrap text-center">
               About Dr. Neetu Mohan
             </h2>
 
