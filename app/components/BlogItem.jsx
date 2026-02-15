@@ -7,9 +7,17 @@ const BlogItem = ({title,description,category,image,id}) => {
 
   return (
     <div className='max-w-[330px] sm:max-w-[300px] bg-white border border-black transition-all hover:shadow-[-7px_7px_0px_#f7b733]'>
-      <Link href={`/blogs/${id}`}>
-      <Image src={image} alt='' width={400} height={400} className='border-b border-black' />
-      </Link>
+     <Link href={`/blogs/${id}`} className="block">
+  <div className="relative w-full h-48 border-b border-black overflow-hidden">
+    <Image
+      src={image}
+      alt={title}
+      fill
+      className="object-cover"
+    />
+  </div>
+</Link>
+
       {/* <p className='ml-5 mt-5 px-1 inline-block bg-primary-light text-white text-sm'>{category}</p> */}
       <div className="p-5">
         <h5 className='mb-2 text-lg font-medium tracking-tight text-gray-900'>{title}</h5>

@@ -36,14 +36,14 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+<header className="relative md:fixed md:top-0 md:left-0 w-full z-50 bg-transparent">
       {/* ───── HEADER STACK (TOP BAR + NAV) ───── */}
       <div
         className={`transition-transform duration-300 ease-in-out
         ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
       >
         {/* ───── TOP BAR ───── */}
-        <div className="w-full bg-[#F7EDC2] border-b border-[#f3e8c8] flex justify-center">
+        {/* <div className="w-full bg-[#F7EDC2] border-b border-[#f3e8c8] flex justify-center">
           <div className="max-w-[1200px] mx-auto px-4 py-3 flex justify-center md:justify-start">
             <Image
               src="/assets/logo.png"
@@ -53,36 +53,42 @@ export default function Header() {
               className="h-18 w-auto object-contain"
             />
           </div>
-        </div>
+        </div> */}
 
         {/* ───── MAIN NAVBAR ───── */}
-        <div className="w-full bg-black">
-          <div className="relative max-w-[1200px] mx-auto px-6 py-6 grid grid-cols-3 items-center text-white">
+        <div className="w-full bg-transparent md:bg-black absolute md:relative top-0 left-0">
+          <div className="relative max-w-[1200px] mx-auto px-6 py-6 md:py-6 grid grid-cols-3 items-center text-white">
             <div />
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex justify-center gap-8 text-sm tracking-wide">
-              {["Home", "About", "Blogs"].map((item) => (
-              <Link
-                key={item}
-                href={item === "Home" ? "/" : item === "About" ? "#about" : "/blogsPage"}
-                className="relative hover:text-[#fde68a] transition after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#fde68a] after:transition-all hover:after:w-full"
-              >
-                {item}
-              </Link>
-            ))}
+              {["Home", "Blogs"].map((item) => (
+                <Link
+                  key={item}
+                  href={
+                    item === "Home"
+                      ? "/"
+                      : item === "About"
+                        ? "#about"
+                        : "/blogsPage"
+                  }
+                  className="relative hover:text-[#fde68a] transition after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#fde68a] after:transition-all hover:after:w-full"
+                >
+                  {item}
+                </Link>
+              ))}
             </nav>
 
             {/* Right Side */}
             <div className="flex justify-end items-center gap-4">
               {/* Mobile Hamburger */}
               <button
-                className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1"
+                className="md:hidden fixed top-6 right-6 z-[60] flex flex-col gap-1"
                 onClick={() => setOpen(true)}
               >
-                <span className="w-6 h-[2px] bg-white" />
-                <span className="w-6 h-[2px] bg-white" />
-                <span className="w-6 h-[2px] bg-white" />
+                <span className="w-7 h-[5px] bg-white rounded" />
+                <span className="w-7 h-[5px] bg-white rounded" />
+                <span className="w-7 h-[5px] bg-white rounded" />
               </button>
 
               {!session ? (
@@ -173,9 +179,6 @@ export default function Header() {
 
           <Link href="/" onClick={() => setOpen(false)}>
             Home
-          </Link>
-          <Link href="#about" onClick={() => setOpen(false)}>
-            About
           </Link>
           <Link href="/blogsPage" onClick={() => setOpen(false)}>
             Blogs

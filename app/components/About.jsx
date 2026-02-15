@@ -22,13 +22,12 @@ export default function About() {
         <div className="flex-1 text-center md:text-left space-y-8">
           {/* Heading */}
           <div className="space-y-5">
-            <h2 className="font-playfair font-extrabold text-2xl sm:text-3xl md:text-5xl text-[#78350f] whitespace-nowrap text-center">
-              About Dr. Neetu Mohan
+            <h2 className="font-playfair font-extrabold text-2xl sm:text-3xl md:text-5xl text-[#78350f] whitespace-nowrap text-center sm:leading-15">
+              About <br /> Acharya Dr. Neetu Mohan
             </h2>
+                        <div className="h-1 w-32 md:w-48 bg-gradient-to-r from-[#fde68a] to-[#f59e0b] mx-auto md:mx-0 rounded-full"></div>
 
-            <div className="h-1 w-32 md:w-48 bg-gradient-to-r from-[#fde68a] to-[#f59e0b] mx-auto md:mx-0 rounded-full"></div>
-
-            <p className="font-serif text-[#4a3f35] text-base md:text-lg leading-relaxed max-w-[620px] mx-auto md:mx-0">
+            <p className="font-serif text-[#4a3f35] text-left md:text-lg leading-relaxed max-w-[620px] mx-auto md:mx-0 font-semibold">
               I am Dr. Neetu Mohan, a professional Astrologer and Vastu
               Consultant with{" "}
               <strong>10+ years of professional experience</strong> in Vedic
@@ -36,6 +35,31 @@ export default function About() {
               businesses. My mission is to provide simple, practical, and
               ethical guidance—without fear, superstition, or false promises.
             </p>
+
+            <div className="flex-1 flex justify-center md:justify-end sm:hidden">
+          <div
+            className="
+      relative
+      w-[300px] sm:w-[360px] md:w-[420px]
+      h-[480px] md:h-[520px]
+      mx-auto md:mx-0
+    "
+          >
+            {/* soft background glow */}
+            <div className="absolute -top-6 -left-6 w-56 h-56 bg-gradient-to-br from-[#fde68a]/50 to-[#f59e0b]/40 rounded-full blur-3xl -z-10"></div>
+
+            <div className="relative w-full h-full rounded-[32px] overflow-hidden shadow-2xl bg-white">
+              <Image
+                src="/assets/about.jpeg"
+                alt="Dr. Neetu Mohan"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
           </div>
 
           {/* Experience & Certifications */}
@@ -80,7 +104,7 @@ export default function About() {
           </div>
         </div>
         {/* Right Image */}
-        <div className="flex-1 flex justify-center md:justify-end">
+        <div className="flex-1 hidden sm:flex justify-center md:justify-end ">
           <div
             className="
       relative

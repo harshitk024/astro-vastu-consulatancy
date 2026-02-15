@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="flex items-center gap-6">
           
           <Link
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/astroneetumohan/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -36,7 +36,7 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="https://www.instagram.com/yourpage"
+            href="https://www.instagram.com/dr.neetu.mohan?igsh=eTBsdWl1MmV1cTA4"
             target="_blank"
             rel="noopener noreferrer"
           >

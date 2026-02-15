@@ -26,33 +26,32 @@ export default function Services() {
     },
     { title: "Vastu Shastra Coaching", image: "/assets/vastu-shastra.jpeg" },
     { title: "AstroVastu Coaching", image: "/assets/astrovastu.jpeg" },
+    {title: "Tantra And Mantra Vidya", image: "/assets/tantra.jpeg"},
+    {title: "Reiki", image: "/assets/reiki.jpeg"}
   ];
 
   const sliderRef = useRef(null);
 
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
+ useEffect(() => {
+  const slider = sliderRef.current;
+  if (!slider) return;
 
-    const isTouchDevice =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const interval = setInterval(() => {
+    const scrollBy = slider.clientWidth * 0.85; 
 
-    if (isTouchDevice) return;
-    const interval = setInterval(() => {
-      const scrollBy = 360 + 24;
+    if (
+      slider.scrollLeft + scrollBy >=
+      slider.scrollWidth - slider.clientWidth
+    ) {
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      slider.scrollBy({ left: scrollBy, behavior: "smooth" });
+    }
+  }, 1800);
 
-      if (
-        slider.scrollLeft + scrollBy >=
-        slider.scrollWidth - slider.clientWidth
-      ) {
-        slider.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        slider.scrollBy({ left: scrollBy, behavior: "smooth" });
-      }
-    }, 2600);
+  return () => clearInterval(interval);
+}, []);
 
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="py-24 bg-[#fffaf2] px-4">

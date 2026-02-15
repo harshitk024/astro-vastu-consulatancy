@@ -1,7 +1,8 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-
+    <section className="relative min-h-screen w-full overflow-visible pb-8 pt-15 sm:pt-0">
       {/* Background Video */}
       <video
         autoPlay
@@ -19,9 +20,16 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-start px-8 md:px-20">
         <div className="text-left max-w-[560px]">
+          <Image
+            src="/assets/asto-logo.webp"
+            alt="AstroVastu Logo"
+            width={180}
+            height={85}
+            className="mb-4 object-contain"
+          />
 
           <h1 className="font-playfair text-white text-[2.6rem] md:text-[3.4rem] font-bold leading-tight mb-6 drop-shadow-lg">
-            Ancient Wisdom & Insights 
+            Ancient Wisdom & Insights
             <br />
             <span className="text-[#fde68a]">
               for a Peaceful, Prosperous Life
@@ -29,7 +37,9 @@ export default function Hero() {
           </h1>
 
           <p className="text-white/85 text-[1.05rem] md:text-[1.15rem] font-medium mb-10 leading-relaxed">
-            Welcome to AstroVastu—where Astrology and Vastu Shastra guide you to balance, success, and inner peace through accurate insights and practical remedies.
+            Welcome to AstroVastu—where Astrology and Vastu Shastra guide you to
+            balance, success, and inner peace through accurate insights and
+            practical remedies.
           </p>
 
           {/* Modern CTA */}
@@ -50,10 +60,8 @@ export default function Hero() {
               →
             </span>
           </a>
-
         </div>
       </div>
-
     </section>
   );
 }

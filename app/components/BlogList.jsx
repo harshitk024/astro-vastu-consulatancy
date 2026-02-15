@@ -21,7 +21,7 @@ const BlogList = ({ limit, showViewMore = false }) => {
 
   return (
     <div>
-      <div className='flex flex-wrap justify-around gap-y-10 mb-16 xl:mx-24'>
+      <div className='flex flex-wrap justify-center sm:justify-start  gap-5 gap-y-10 mb-16 xl:mx-24'>
         {displayedBlogs.map((item) => (
           <BlogItem
             key={item._id}
