@@ -13,7 +13,9 @@ export default function ContactCTA() {
       </p>
 
       <a
-        href="#"
+        href="https://wa.me/9686660073 "
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-block bg-[#92400e] text-white px-7 py-3 rounded-full font-medium"
       >
         Contact Now
