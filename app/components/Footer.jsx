@@ -16,6 +16,23 @@ export default function Footer() {
           <p className="text-[12px] tracking-[0.35em] text-white/50 uppercase mt-1">
             Consultancy
           </p>
+          <div className="mt-3 flex gap-2 justify-center sm:justify-start">
+            <Image
+              src="/assets/phone.svg"
+              alt="Facebook"
+              width={15}
+              height={15}
+              className="opacity-70 hover:opacity-100 transition cursor-pointer"
+            />
+            <Link
+            href="tel:+919686660073"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white opacity-95"
+          >
+            +91 9686660073
+          </Link>
+          </div>
         </div>
 
         {/* Social Icons */}

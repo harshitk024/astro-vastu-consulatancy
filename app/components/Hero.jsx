@@ -44,7 +44,7 @@ export default function Hero() {
 
           {/* Modern CTA */}
           <a
-            href="#contact"
+            href="https://wa.me/9686660073"
             className="group inline-flex items-center gap-4
               px-8 py-3 rounded-full
               border border-[#fde68a]/70
