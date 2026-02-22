@@ -27,7 +27,8 @@ export default function Services() {
     { title: "Vastu Shastra Coaching", image: "/assets/vastu-shastra.jpeg" },
     { title: "AstroVastu Coaching", image: "/assets/astrovastu.jpeg" },
     {title: "Tantra And Mantra Vidya", image: "/assets/tantra.jpeg"},
-    {title: "Reiki", image: "/assets/reiki.jpeg"}
+    {title: "Reiki", image: "/assets/reiki.jpeg"},
+    {title: "Interior Decoration", image: "/assets/interior_decoration.jpeg"}
   ];
 
   const sliderRef = useRef(null);

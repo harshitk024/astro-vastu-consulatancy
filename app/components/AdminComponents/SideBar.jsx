@@ -30,13 +30,13 @@ const Sidebar = () => {
           <span className="hidden sm:inline">Blog lists</span>
         </Link>
 
-        <Link
+        {/* <Link
           href="/admin/subscriptions"
           className="flex items-center gap-3 border border-black bg-white px-4 py-3 font-medium shadow-[-5px_5px_0px_#000000] hover:translate-x-1 hover:-translate-y-1 transition"
         >
           <Image src={assets.email_icon} alt="Subscriptions" width={24} />
           <span className="hidden sm:inline">Subscriptions</span>
-        </Link>
+        </Link> */}
 
       </nav>
     </aside>

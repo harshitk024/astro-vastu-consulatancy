@@ -14,7 +14,7 @@ export default function Footer() {
             ASTRO VASTU
           </h2>
           <p className="text-[12px] tracking-[0.35em] text-white/50 uppercase mt-1">
-            Consultancy
+            Research & Consultancy LLP
           </p>
           <div className="mt-3 flex gap-2 justify-center sm:justify-start">
             <Image
