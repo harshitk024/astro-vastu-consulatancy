@@ -180,6 +180,14 @@ export default function Header() {
           <Link href="/" onClick={() => setOpen(false)}>
             Home
           </Link>
+          {session && session.user.role === "admin" && (
+                      <Link
+                        href="/admin"
+                        className=""
+                      >
+                        Admin Panel
+                      </Link>
+                    )}
           <Link href="/blogsPage" onClick={() => setOpen(false)}>
             Blogs
           </Link>

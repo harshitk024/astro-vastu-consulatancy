@@ -20,8 +20,10 @@ const BlogList = ({ limit, showViewMore = false }) => {
   const displayedBlogs = limit ? blogs.slice(0, limit) : blogs
 
   return (
-    <div>
-      <div className='flex flex-wrap justify-center sm:justify-start  gap-5 gap-y-10 mb-16 xl:mx-24'>
+    <section className="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {displayedBlogs.map((item) => (
           <BlogItem
             key={item._id}
@@ -38,13 +40,13 @@ const BlogList = ({ limit, showViewMore = false }) => {
         <div className="text-center">
           <Link
             href="/blogsPage"
-            className="text-primary font-semibold hover:underline"
+            className="inline-block text-primary font-semibold hover:underline"
           >
             View more blogs →
           </Link>
         </div>
       )}
-    </div>
+    </section>
   )
 }
 

@@ -34,7 +34,7 @@ const page = () => {
                 <table className="w-full text-sm text-gray-500">
                     <thead className="text-xs text-gray-700 text-left uppercase bg-gray-50">
                         <tr>
-                            <th scope="col" className="hidden sm:block px-6 py-3">
+                            <th scope="col" className="hidden sm:table-cell px-6 py-3">
                                 Author name
                             </th>
                             <th scope="col" className="px-6 py-3">
