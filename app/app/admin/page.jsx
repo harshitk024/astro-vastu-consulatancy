@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from "next/navigation";
 
+
 const page = async () => {
 
   const session = await getServerSession(authOptions)
@@ -14,6 +15,8 @@ const page = async () => {
   if(session.user.role !== "admin"){
     redirect("/unauthorized")
   }
+
+  redirect("/admin/addBlog")
 
   return (
     <div>
