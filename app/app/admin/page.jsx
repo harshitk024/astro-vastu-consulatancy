@@ -6,17 +6,17 @@ import { redirect } from "next/navigation";
 
 const page = async () => {
 
-  const session = await getServerSession(authOptions)
+  // const session = await getServerSession(authOptions)
 
-  if(!session){
-    redirect("/login")
-  }
+  // if(!session){
+  //   redirect("/login")
+  // }
 
-  if(session.user.role !== "admin"){
-    redirect("/unauthorized")
-  }
-
-  redirect("/admin/addBlog")
+  // if(session.user.role !== "admin"){
+  //   redirect("/unauthorized")
+  // } else {
+  //   redirect("/admin/addBlog")
+  // }
 
   return (
     <div>
