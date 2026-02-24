@@ -48,7 +48,7 @@ export default function Services() {
     } else {
       slider.scrollBy({ left: scrollBy, behavior: "smooth" });
     }
-  }, 1800);
+  }, 5000);
 
   return () => clearInterval(interval);
 }, []);
@@ -115,7 +115,7 @@ export default function Services() {
 
             {/* Content */}
             <div className="p-6 text-center">
-              <h3 className="font-playfair text-base text-[#7c2d12] tracking-wide">
+              <h3 className="font-playfair text-lg text-amber-400 tracking-wide">
                 {service.title}
               </h3>
 

@@ -23,12 +23,12 @@ export default function Hero() {
           <Image
             src="/assets/asto-logo.webp"
             alt="AstroVastu Logo"
-            width={180}
-            height={85}
-            className="mb-4 object-contain"
+            width={300}
+            height={200}
+            className="mb-4 object-contain sm:w-200"
           />
 
-          <h1 className="font-playfair text-white text-[2.6rem] md:text-[3.4rem] font-bold leading-tight mb-6 drop-shadow-lg">
+          <h1 className="font-playfair text-white text-[2.6rem] md:text-[3.4rem] font-bold leading-tight mb-5 drop-shadow-lg">
             Ancient Wisdom & Insights
             <br />
             <span className="text-[#fde68a]">
