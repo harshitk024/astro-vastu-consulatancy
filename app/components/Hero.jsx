@@ -2,7 +2,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen w-full overflow-visible pb-8 pt-15 sm:pt-0">
+    <section className="relative min-h-screen w-full overflow-visible pb-8 pt-24 sm:pt-0">
+
       {/* Background Video */}
       <video
         autoPlay
@@ -14,21 +15,29 @@ export default function Hero() {
         <source src="/assets/hero-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* Spiritual Overlay */}
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/80" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-start px-8 md:px-20">
+      <div className="relative z-10 h-full flex items-center justify-start px-6 md:px-20">
         <div className="text-left max-w-[560px]">
-          <Image
-            src="/assets/asto-logo.webp"
-            alt="AstroVastu Logo"
-            width={300}
-            height={200}
-            className="mb-4 object-contain sm:w-200"
-          />
 
-          <h1 className="font-playfair text-white text-[2.6rem] md:text-[3.4rem] font-bold leading-tight mb-5 drop-shadow-lg">
+          {/* Title above logo */}
+          <h2 className="text-[#fde68a] text-[2.2rem] font-semibold font-playfair tracking-wide mb-3">
+            Astrovastu Research & Consultancy
+          </h2>
+
+          {/* Logo */}
+        <Image
+  src="/assets/astro-logo.webp"
+  alt="AstroVastu Logo"
+  width={260}
+  height={190}
+  className="mb-6 object-contain w-[200px] sm:w-[240px] md:w-[260px]"
+/>
+
+          {/* Heading */}
+          <h1 className="font-playfair text-white text-[2.2rem] md:text-[3.4rem] font-bold leading-tight mb-5 drop-shadow-lg">
             Ancient Wisdom & Insights
             <br />
             <span className="text-[#fde68a]">
@@ -36,17 +45,18 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-white/85 text-[1.05rem] md:text-[1.15rem] font-medium mb-10 leading-relaxed">
+          {/* Description */}
+          <p className="text-white/85 text-[0.95rem] md:text-[1.15rem] font-medium mb-8 leading-relaxed">
             Welcome to AstroVastu—where Astrology and Vastu Shastra guide you to
             balance, success, and inner peace through accurate insights and
             practical remedies.
           </p>
 
-          {/* Modern CTA */}
+          {/* CTA */}
           <a
             href="https://wa.me/9686660073"
             className="group inline-flex items-center gap-4
-              px-8 py-3 rounded-full
+              px-7 py-3 rounded-full
               border border-[#fde68a]/70
               text-[#fde68a] font-semibold
               bg-white/5 backdrop-blur-md
@@ -60,6 +70,7 @@ export default function Hero() {
               →
             </span>
           </a>
+
         </div>
       </div>
     </section>

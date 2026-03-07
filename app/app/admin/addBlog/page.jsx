@@ -2,13 +2,14 @@
 
 import { assets } from '@/Assets/assets'
 import axios from 'axios'
-import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
+import Image from "next/image"
 
-const page = () => {
+const Page = () => {
 
-  const [image, setImage] = useState(false)
+  const [image, setImage] = useState(null)
+  const [preview, setPreview] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const [data, setData] = useState({
@@ -20,10 +21,23 @@ const page = () => {
   })
 
   const onChangeHandler = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    setData(data => ({ ...data, [name]: value }))
+    const { name, value } = event.target
+    setData(prev => ({ ...prev, [name]: value }))
   }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setImage(file)
+    setPreview(URL.createObjectURL(file))
+  }
+
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview)
+    }
+  }, [preview])
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
@@ -45,6 +59,7 @@ const page = () => {
       const response = await axios.post("/api/blog", formData)
 
       if (response.data.success) {
+
         toast.success(response.data.msg)
 
         setData({
@@ -55,9 +70,11 @@ const page = () => {
           authorImg: "/author_img.png"
         })
 
-        setImage(false)
+        setImage(null)
+        setPreview(null)
+
       } else {
-        toast.error("Error")
+        toast.error("Error adding blog")
       }
 
     } catch (error) {
@@ -68,56 +85,70 @@ const page = () => {
   }
 
   return (
-    <form onSubmit={onSubmitHandler} className='pt-5 px-5 sm:pt-12 sm:pl-16'>
 
-      <p className='text-xl'>Upload thumbnail</p>
+    <form onSubmit={onSubmitHandler} className="pt-5 px-5 sm:pt-12 sm:px-16">
 
-      <label htmlFor="image">
-        <Image
-          className='mt-4'
-          src={!image ? assets.upload_area : URL.createObjectURL(image)}
-          width={140}
-          height={70}
-          alt=""
-        />
-      </label>
+      <p className="text-xl">Upload thumbnail</p>
 
-      <input
-        onChange={(e) => setImage(e.target.files[0])}
-        type="file"
-        id="image"
-        hidden
-        required
+      {/* Upload Area */}
+     <div className="mt-4 w-[140px]">
+
+  <label htmlFor="image" className="cursor-pointer inline-block">
+
+    {preview ? (
+      <img
+        src={preview}
+        alt="preview"
+        className="border w-[140px] h-[70px] object-cover"
       />
+    ) : (
+      <Image
+        src={assets.arrow}
+        alt="upload"
+        width={140}
+        height={70}
+        className="border"
+      />
+    )}
 
-      <p className='text-xl mt-4'>Blog title</p>
+  </label>
+
+  <input
+    onChange={handleImageChange}
+    type="file"
+    id="image"
+    hidden
+    required
+  />
+
+</div>
+
+      <p className="text-xl mt-6">Blog title</p>
 
       <input
-        name='title'
+        name="title"
         onChange={onChangeHandler}
         value={data.title}
-        className='w-full sm:w-[500px] mt-4 px-4 py-3 border'
+        className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
         type="text"
-        placeholder='Type here'
+        placeholder="Type here"
         required
       />
 
-      <p className='text-xl mt-4'>Blog Description</p>
+      <p className="text-xl mt-6">Blog Description</p>
 
       <textarea
-        name='description'
+        name="description"
         onChange={onChangeHandler}
         value={data.description}
-        className='w-full sm:w-[500px] mt-4 px-4 py-3 border'
-        placeholder='Write content here'
+        className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
+        placeholder="Write content here"
         rows={6}
         required
       />
 
-      <br />
-
       <button
-        type='submit'
+        type="submit"
         disabled={loading}
         className={`mt-8 w-40 h-12 text-white ${
           loading ? "bg-gray-400 cursor-not-allowed" : "bg-black"
@@ -130,4 +161,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
