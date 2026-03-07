@@ -23,17 +23,17 @@ export default function Hero() {
         <div className="text-left max-w-[560px]">
 
           {/* Title above logo */}
-          <h2 className="text-[#fde68a] text-[2.2rem] font-semibold font-playfair tracking-wide mb-3">
-            Astrovastu Research & Consultancy
-          </h2>
+          <h2 className="text-[#fde68a] text-[1.9rem] sm:text-[2.2rem] font-semibold font-playfair tracking-wide mb-4 leading-tight max-w-[320px] sm:max-w-full">
+  Astrovastu Research & Consultancy
+</h2>
 
           {/* Logo */}
-        <Image
+       <Image
   src="/assets/astro-logo.webp"
   alt="AstroVastu Logo"
-  width={260}
-  height={190}
-  className="mb-6 object-contain w-[200px] sm:w-[240px] md:w-[260px]"
+  width={320}
+  height={240}
+  className="mb-6 object-contain w-[260px] sm:w-[240px] md:w-[260px]"
 />
 
           {/* Heading */}

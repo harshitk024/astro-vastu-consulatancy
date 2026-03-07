@@ -2,7 +2,7 @@
 
 import { assets } from '@/Assets/assets'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
 import Image from "next/image"
 
@@ -11,6 +11,8 @@ const Page = () => {
   const [image, setImage] = useState(null)
   const [preview, setPreview] = useState(null)
   const [loading, setLoading] = useState(false)
+
+  const fileInputRef = useRef(null)
 
   const [data, setData] = useState({
     title: "",
@@ -26,11 +28,13 @@ const Page = () => {
   }
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files?.[0]
     if (!file) return
 
+    const previewURL = URL.createObjectURL(file)
+
     setImage(file)
-    setPreview(URL.createObjectURL(file))
+    setPreview(previewURL)
   }
 
   useEffect(() => {
@@ -91,71 +95,78 @@ const Page = () => {
       <p className="text-xl">Upload thumbnail</p>
 
       {/* Upload Area */}
-     <div className="mt-4 w-[140px]">
+      <div className="mt-4 w-[160px]">
 
-  <label htmlFor="image" className="cursor-pointer inline-block">
+        <div
+          onClick={() => fileInputRef.current.click()}
+          className="cursor-pointer"
+        >
+          {preview ? (
+            <img
+              src={preview}
+              alt="preview"
+              className="border w-[160px] h-[90px] object-cover"
+            />
+          ) : (
+            <Image
+              src={assets.upload_area}
+              alt="upload"
+              width={160}
+              height={90}
+              className="border"
+            />
+          )}
+        </div>
 
-    {preview ? (
-      <img
-        src={preview}
-        alt="preview"
-        className="border w-[140px] h-[70px] object-cover"
-      />
-    ) : (
-      <Image
-        src={assets.arrow}
-        alt="upload"
-        width={140}
-        height={70}
-        className="border"
-      />
-    )}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="hidden"
+          required
+        />
 
-  </label>
+      </div>
 
-  <input
-    onChange={handleImageChange}
-    type="file"
-    id="image"
-    hidden
-    required
-  />
+      {/* Form Fields */}
+      <div className="mt-6 w-full sm:w-[500px]">
 
-</div>
+        <p className="text-xl">Blog title</p>
 
-      <p className="text-xl mt-6">Blog title</p>
+        <input
+          name="title"
+          onChange={onChangeHandler}
+          value={data.title}
+          className="w-full mt-4 px-4 py-3 border"
+          type="text"
+          placeholder="Type here"
+          required
+        />
 
-      <input
-        name="title"
-        onChange={onChangeHandler}
-        value={data.title}
-        className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
-        type="text"
-        placeholder="Type here"
-        required
-      />
+        <p className="text-xl mt-6">Blog Description</p>
 
-      <p className="text-xl mt-6">Blog Description</p>
+        <textarea
+          name="description"
+          onChange={onChangeHandler}
+          value={data.description}
+          className="w-full mt-4 px-4 py-3 border"
+          placeholder="Write content here"
+          rows={6}
+          required
+        />
 
-      <textarea
-        name="description"
-        onChange={onChangeHandler}
-        value={data.description}
-        className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
-        placeholder="Write content here"
-        rows={6}
-        required
-      />
+        <button
+          type="submit"
+          disabled={loading}
+          className={`mt-6 w-40 h-12 text-white ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-black"
+          }`}
+        >
+          {loading ? "Adding..." : "Add Blog"}
+        </button>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className={`mt-8 w-40 h-12 text-white ${
-          loading ? "bg-gray-400 cursor-not-allowed" : "bg-black"
-        }`}
-      >
-        {loading ? "Adding..." : "Add Blog"}
-      </button>
+      </div>
 
     </form>
   )
