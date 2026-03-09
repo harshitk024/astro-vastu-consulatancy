@@ -121,7 +121,7 @@ export default function Header() {
                   >
                     {session.user.role === "admin" && (
                       <Link
-                        href="/admin/addBlog"
+                        href="/admin"
                         className="block px-4 py-2 hover:bg-white/10"
                       >
                         Admin Panel
@@ -182,7 +182,7 @@ export default function Header() {
           </Link>
           {session && session.user.role === "admin" && (
                       <Link
-                        href="/admin/addBlog"
+                        href="/admin"
                         className=""
                       >
                         Admin Panel
