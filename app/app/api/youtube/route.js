@@ -29,7 +29,7 @@ export async function GET() {
       const minutes = parseInt(match?.[1] || 0)
       const seconds = parseInt(match?.[2] || 0)
       const totalSeconds = minutes * 60 + seconds
-      return totalSeconds > 60
+      return totalSeconds > 10
     })
     .map(video => video.id)
 
