@@ -26,6 +26,7 @@ export default function Hero() {
           <h2 className="text-[#fde68a] text-[1.9rem] sm:text-[2.2rem] font-semibold font-playfair tracking-wide mb-4 leading-tight max-w-[320px] sm:max-w-full">
   Astrovastu Research & Consultancy
 </h2>
+        <h4 className="text-[#fde68a] text-[1rem] sm:text-[2.2rem] font-semibold font-playfair tracking-wide mb-4 leading-tight max-w-[320px] sm:max-w-full">Acharya Dr. Neetu Mohan</h4>
 
           {/* Logo */}
        <Image
